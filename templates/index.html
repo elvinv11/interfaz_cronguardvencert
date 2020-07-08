@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}CRONOGRAMA DE GUARDIA{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="base.css") }}">
+</head>
+<body>
+{% block content %}{% endblock %}
+<h1> bienvenidos al sistema automatisado del cronograma de guardia</h1><br>
+<p> Personal	introduzca el orden del personal en la tabla, separado solo por coma (,) </p><br>
+<p> Meses	Introduzca el rango de los meses en secuencia ascendente ejemplo: 1-12,  separado por el signo (-) </p><br>
+<p> Anio	introduzca el anio actual, en un entero de cuatro digitos ejemplo: 1234 </p><br>
+<form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.personal.label }}
+            {{ form.personal }}<br>
+            {% for error in form.personal.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.mes.label }}
+            {{ form.mes }}<br>
+            {% for error in form.mes.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.anio.label }}
+            {{ form.anio }}<br>
+            {% for error in form.anio.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+></body>
+</html>
